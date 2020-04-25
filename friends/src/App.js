@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Link, Switch, Route, Redirect } from 'react-router-dom';
 import Friends from './components/Friends';
 import Login from './components/Login';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 	return (
@@ -17,8 +18,9 @@ function App() {
 					</li>
 				</ul>
 				<Switch>
-					<Route exact path="/friends" component={Friends} />
+					<PrivateRoute exact path="/friends" component={Friends} />
 					<Route exact path="/login" component={Login} />
+					<Redirect to="/login" />
 				</Switch>
 			</div>
 		</BrowserRouter>
