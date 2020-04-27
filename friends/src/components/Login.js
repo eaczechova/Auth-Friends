@@ -22,22 +22,35 @@ function Login(props) {
 	};
 
 	return (
-		<div>
-			<form onSubmit={login}>
-				<input
-					type="text"
-					name="username"
-					value={credentials.username}
-					onChange={handleInputChange}
-				/>
-				<input
-					type="password"
-					name="password"
-					value={credentials.password}
-					onChange={handleInputChange}
-				/>
-				<button>Log In</button>
-			</form>
+		<div className="wrapper">
+			<div>
+				<h1>Welcome to Friends App!</h1>
+				<p>
+					You can view list of Friends, add new friends and delete them. Please login
+					first.
+				</p>
+			</div>
+			<div>
+				<form onSubmit={login}>
+					<input
+						type="text"
+						name="username"
+						value={credentials.username}
+						onChange={handleInputChange}
+						placeholder="Username"
+					/>
+
+					<input
+						type="password"
+						name="password"
+						value={credentials.password}
+						onChange={handleInputChange}
+						placeholder="Password"
+					/>
+
+					<button>Log In</button>
+				</form>
+			</div>
 		</div>
 	);
 }

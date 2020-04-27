@@ -9,14 +9,22 @@ function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<ul>
-					<li>
-						<Link to="/login">Login</Link>
-					</li>
-					<li>
-						<Link to="/friends">Friends</Link>
-					</li>
-				</ul>
+				<header>
+					<p>Friends App</p>
+
+					<nav>
+						<ul>
+							<li>
+								<Link to="/login">Login</Link>
+							</li>
+							<li>
+								<Link to="/friends">Friends</Link>
+							</li>
+						</ul>
+					</nav>
+				</header>
+
+				<div></div>
 				<Switch>
 					<PrivateRoute exact path="/friends" component={Friends} />
 					<Route exact path="/login" component={Login} />
