@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import {
+	FormElement,
+	InputElement,
+	FormButton,
+	ComponentWrapper,
+	FriendsWrapper,
+	FriendsList,
+	FriendsCard,
+	FriendsCardHeading,
+	FriendsCardText,
+	FriendDeleteButton,
+} from './styles';
 
 const initialState = {
 	name: '',
@@ -34,9 +46,12 @@ function Friends() {
 			.then((res) => {
 				const newFriendsList = [...friends, friend];
 				setFriends(newFriendsList);
+
 				clearState();
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const clearState = () => {
@@ -57,49 +72,51 @@ function Friends() {
 	}, []);
 
 	return (
-		<div className="wrapper">
-			<form onSubmit={addFriend}>
-				<input
+		<ComponentWrapper>
+			<FormElement onSubmit={addFriend}>
+				<InputElement
 					type="text"
 					name="name"
 					value={friend.name}
 					onChange={handleInputChange}
 					placeholder="Name"
 				/>
-				<input
+				<InputElement
 					type="number"
 					name="age"
 					value={friend.age}
 					onChange={handleInputChange}
 					placeholder="Age"
 				/>
-				<input
+				<InputElement
 					type="text"
 					name="email"
 					value={friend.email}
 					onChange={handleInputChange}
 					placeholder="E-mail"
 				/>
-				<button>Add</button>
-			</form>
-			<div className="friends-list">
-				<ul>
+				<FormButton>Add</FormButton>
+			</FormElement>
+			<FriendsWrapper>
+				<FriendsList>
 					{friends.length > 0
 						? friends.map((friend) => {
 								return (
-									<li key={friend.id}>
-										<h2>{friend.name}</h2>
-										<span>Age: {friend.age}</span>
+									<FriendsCard key={friend.id}>
+										<FriendsCardHeading>{friend.name}</FriendsCardHeading>
+										<FriendsCardText>Age: {friend.age}</FriendsCardText>
 										<br />
-										<span>Email: {friend.email}</span>
-										<button onClick={() => deleteFriend(friend.id)}>Delete</button>
-									</li>
+										<FriendsCardText>Email: {friend.email}</FriendsCardText>
+										<FriendDeleteButton onClick={() => deleteFriend(friend.id)}>
+											Delete
+										</FriendDeleteButton>
+									</FriendsCard>
 								);
 						  })
 						: null}
-				</ul>
-			</div>
-		</div>
+				</FriendsList>
+			</FriendsWrapper>
+		</ComponentWrapper>
 	);
 }
 

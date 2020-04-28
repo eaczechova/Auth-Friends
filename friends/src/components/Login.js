@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {
+	FormElement,
+	InputElement,
+	FormButton,
+	ComponentWrapper,
+	ComponentHeading,
+	Text,
+} from './styles';
 
 function Login(props) {
 	const [credentials, setCredentials] = useState({});
@@ -22,36 +30,34 @@ function Login(props) {
 	};
 
 	return (
-		<div className="wrapper">
+		<ComponentWrapper>
 			<div>
-				<h1>Welcome to Friends App!</h1>
-				<p>
+				<ComponentHeading>Welcome to Friends App!</ComponentHeading>
+				<Text>
 					You can view list of Friends, add new friends and delete them. Please login
 					first.
-				</p>
+				</Text>
 			</div>
 			<div>
-				<form onSubmit={login}>
-					<input
+				<FormElement onSubmit={login}>
+					<InputElement
 						type="text"
 						name="username"
 						value={credentials.username}
 						onChange={handleInputChange}
 						placeholder="Username"
 					/>
-
-					<input
+					<InputElement
 						type="password"
 						name="password"
 						value={credentials.password}
 						onChange={handleInputChange}
 						placeholder="Password"
 					/>
-
-					<button>Log In</button>
-				</form>
+					<FormButton>Log In</FormButton>
+				</FormElement>
 			</div>
-		</div>
+		</ComponentWrapper>
 	);
 }
 

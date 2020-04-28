@@ -4,25 +4,31 @@ import { BrowserRouter, Link, Switch, Route, Redirect } from 'react-router-dom';
 import Friends from './components/Friends';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
+import {
+	HeaderElement,
+	Navigation,
+	NavigationList,
+	StyledLink,
+	HeaderTitle,
+} from './components/styles';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<div className="App">
-				<header>
-					<p>Friends App</p>
-
-					<nav>
-						<ul>
+				<HeaderElement>
+					<HeaderTitle>Friends App</HeaderTitle>
+					<Navigation>
+						<NavigationList>
 							<li>
-								<Link to="/login">Login</Link>
+								<StyledLink to="/login">Login</StyledLink>
 							</li>
 							<li>
-								<Link to="/friends">Friends</Link>
+								<StyledLink to="/friends">Friends</StyledLink>
 							</li>
-						</ul>
-					</nav>
-				</header>
+						</NavigationList>
+					</Navigation>
+				</HeaderElement>
 
 				<div></div>
 				<Switch>
